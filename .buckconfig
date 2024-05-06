@@ -1,0 +1,33 @@
+[cells]
+root = .
+prelude = buck/prelude
+toolchains = buck/toolchains
+platforms = buck/platforms
+none = none
+
+[cell_aliases]
+config = prelude
+ovr_config = prelude
+fbcode = none
+fbsource = none
+fbcode_macros = none
+buck = none
+
+[buildfile]
+name = BUILD
+
+[parser]
+target_platform_detector_spec = target:root//...->@platforms//:linux-x86_64
+
+[project]
+ignore = .git
+
+[buck2]
+file_watcher = watchman
+digest_algorithms = SHA256
+
+[buck2_re_client]
+enabled = false
+tls = false
+instance_name = md2pdf-remote
+address = grpc://127.0.0.1:8980
